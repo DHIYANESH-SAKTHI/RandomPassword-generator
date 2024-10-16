@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwordgenerator</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div>
+            <h2>Random password<br><span>generator</span></h2>
+            <div class="main1">
+                <input type="text" id="inputbox" placeholder="password">
+                <img src="images/copy.png" onclick=toCopy()>
+            </div>
+            <div id="btn">
+                <button id="buttonn"> <img src="images/generate.png" >Generate</button>
+            </div>
+    </div>
+    </div>
+
+
+    <script>
+        var a=document.getElementById("buttonn");
+        a.addEventListener("click" ,function(){
+            let password=createPass();
+            var b=document.getElementById("inputbox");
+            b.value=password;
+        })
+         charSet="ABCDEFGHIJKLMOPQURSTUVWXYZabcdefghijklmopqrstuvwxtz1234567890!@#$%^&*()_-"
+            const len=10;
+            
+        
+         function createPass(){
+            let pass="";
+            for(let i=0;i<len;i++){
+                let rindex=Math.floor(Math.random()*charSet.length);
+                pass+=charSet[rindex];
+            }
+            return pass
+        }
+
+        function toCopy(){
+            var c=document.getElementById("inputbox")
+            c.select();
+            document.execCommand("copy");
+            alert("copied to clipboard !")
+        }
+    </script>
+
+</body>
+</html>
